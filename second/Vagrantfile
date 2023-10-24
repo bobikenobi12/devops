@@ -1,0 +1,8 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "jumphost" do |jumphost|
+	jumphost.vm.box = "ubuntu/xenial64"
+	jumphost.vm.hostname = "jumphost"
+	jumphost.vm.network "forwarded_port", guest: 80, host: 13001
+	jumphost.vm.provision "shell", path: "jumphost.sh"
+	  end
+	end
